@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "114827926947",
+    "project_id": "icareconnect-cab4b",
+    "storage_bucket": "icareconnect-cab4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114827926947:android:3ea7ca813300f1880cce16",
+        "android_client_info": {
+          "package_name": "com.consultantvendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114827926947-strfigusoh9kl8v6s64n6ocbjr4t8p2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYFiFiNNl1M_PkACWlAehrTmOifgwgg50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114827926947-strfigusoh9kl8v6s64n6ocbjr4t8p2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
