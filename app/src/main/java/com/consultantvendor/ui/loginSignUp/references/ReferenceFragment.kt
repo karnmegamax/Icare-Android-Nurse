@@ -128,6 +128,7 @@ class ReferenceFragment : DaggerFragment(), OnDateSelected {
             binding.etEndDateRefer3.hideKeyboard()
             DateUtils.openDatePicker(requireActivity(), this, false, true)
         }
+
         /*  binding.etBio.setOnFocusChangeListener { v, hasFocus ->
               if (hasFocus) binding.etBio.hint = getString(R.string.bio)
               else binding.etBio.hint = getString(R.string.bio_des)

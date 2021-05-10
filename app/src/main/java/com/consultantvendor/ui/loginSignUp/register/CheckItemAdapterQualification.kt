@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.consultantvendor.R
@@ -14,6 +15,7 @@ import com.consultantvendor.data.network.LoadingStatus.ITEM
 import com.consultantvendor.data.network.LoadingStatus.LOADING
 import com.consultantvendor.databinding.ItemPagingLoaderBinding
 import com.consultantvendor.databinding.RvItemCheckExperienceBinding
+import com.consultantvendor.utils.CustomFields.skillsexperience
 import com.consultantvendor.utils.gone
 import com.consultantvendor.utils.visible
 
@@ -24,7 +26,7 @@ class CheckItemAdapterQualification(private val multiSelect: Boolean, private va
     private var allItemsLoaded = true
 
     //private lateinit var context: Context
-    private var rate = arrayOf("0 Year", "1 Year", "2 Years", "3 Years", "4 Years", "5 Years", "6 Years", "7 Years", "8 Years", "9 Years", "10 Years", "11 Years", "12 Years", "13 Years", "14 Years", "15 Years", "16 Years", "17 Years", "18 Years", "19 Years", "20 Years", "20+ Years")
+    private var rate = arrayOf(/*"Experience", */"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "20+")
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder.itemViewType != LOADING)
@@ -72,13 +74,33 @@ class CheckItemAdapterQualification(private val multiSelect: Boolean, private va
             expSpinner.adapter = aa
             expSpinner.onItemSelectedListener
             items[adapterPosition].skill_exp = expSpinner.selectedItem.toString()
+            skillsexperience = expSpinner.selectedItem.toString()
             rbName.isChecked = item.isSelected
             cbName.isChecked = item.isSelected
-
-            cbName.setOnClickListener {
+            rbName.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (rbName.isChecked) {
+                    expSpinner.visible()
+                    expSpinner.isFocusable = true
+                    expSpinner.isClickable = true
+                } else {
+                    expSpinner.gone()
+                    expSpinner.isFocusable = false
+                    expSpinner.isClickable = false
+                }
+            }
+            if (rbName.isChecked) {
+                expSpinner.visible()
+                expSpinner.isFocusable = true
+                expSpinner.isClickable = true
+            } else {
+                expSpinner.gone()
+                expSpinner.isFocusable = false
+                expSpinner.isClickable = false
+            }
+            clMain.setOnClickListener {
                 if (multiSelect) {
                     items[adapterPosition].isSelected = !items[adapterPosition].isSelected
-                    //notifyDataSetChanged()
+                    notifyDataSetChanged()
                 } else {
                     items.forEachIndexed { index, filterOption ->
                         items[index].isSelected = adapterPosition == index

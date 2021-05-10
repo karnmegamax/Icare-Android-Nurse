@@ -102,24 +102,46 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
 
     private var fileToUpload: File? = null
 
-    private var hashMap = HashMap<String, Any>()
-
     private var qualification = ""
     private var shift = ""
     private var experience = ""
-    var rate = arrayOf("15$/Hour", "20$/Hour", "25$/Hour", "30$/Hour", "35$/Hour", "40$/Hour", "45$/Hour", "50$/Hour", "55$/Hour", "60$/Hour", "65$/Hour", "70$/Hour", "75$/Hour", "80$/Hour", "85$/Hour", "90$/Hour", "95$/Hour", "100$/Hour")
+    private var setRate = ""
+    private var rate = arrayOf(
+        "15",
+        "20",
+        "25",
+        "30",
+        "35",
+        "40",
+        "45",
+        "50",
+        "55",
+        "60",
+        "65",
+        "70",
+        "75",
+        "80",
+        "85",
+        "90",
+        "95",
+        "100"
+    )
+    private var dateConstVal = ""
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         if (rootView == null) {
-            binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
+            binding =
+                DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
             rootView = binding.root
             /*val arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(activity?.baseContext!!,
                     android.R.layout.simple_spinner_dropdown_item,
                     rate)*/
-            val aa = ArrayAdapter(activity?.baseContext!!, android.R.layout.simple_spinner_item, rate)
+            val aa =
+                ArrayAdapter(activity?.baseContext!!, android.R.layout.simple_spinner_item, rate)
             with(rootView!!.rate_spinner)
             {
                 adapter = aa
@@ -162,7 +184,13 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
         userData = userRepository.getUser()
 
         if (!userData?.name.equals(DUMMY_NAME))
-            binding.etName.setText(userData?.name ?: "")
+            binding.etName.setText(
+                userData?.name ?: ""
+            )
+        binding.etLastName.setText(
+            userData?.last_name ?: ""
+        )
+
 
         binding.etEmail.setText(userData?.email ?: "")
         if (arguments?.containsKey(UPDATE_PROFILE) == true) {
@@ -239,8 +267,12 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                         return@forEach
                     }
                     CustomFields.START_DATE -> {
-                        binding.etStartDate.setText(DateUtils.dateFormatChange(DateFormat.DATE_FORMAT,
-                                DateFormat.DATE_FORMAT_SLASH, it.field_value ?: ""))
+                        binding.etStartDate.setText(
+                            DateUtils.dateFormatChange(
+                                DateFormat.DATE_FORMAT,
+                                DateFormat.DATE_FORMAT_SLASH, it.field_value ?: ""
+                            )
+                        )
                         return@forEach
                     }
                 }
@@ -298,7 +330,40 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
 
         binding.etStartDate.setOnClickListener {
             binding.etStartDate.hideKeyboard()
+            dateConstVal = "1"
             DateUtils.openDatePicker(requireActivity(), this, false, true)
+        }
+        binding.etStartDateRefer1.setOnClickListener {
+            binding.etStartDate.hideKeyboard()
+            dateConstVal = "2"
+            DateUtils.openDatePicker(requireActivity(), this, false, false)
+        }
+
+        binding.etStartDateRefer2.setOnClickListener {
+            binding.etStartDate.hideKeyboard()
+            dateConstVal = "3"
+            DateUtils.openDatePicker(requireActivity(), this, false, false)
+        }
+
+        binding.etStartDateRefer3.setOnClickListener {
+            binding.etStartDate.hideKeyboard()
+            dateConstVal = "4"
+            DateUtils.openDatePicker(requireActivity(), this, false, false)
+        }
+        binding.etEndDateRefer1.setOnClickListener {
+            binding.etEndDateRefer1.hideKeyboard()
+            dateConstVal = "5"
+            DateUtils.openDatePicker(requireActivity(), this, false, false)
+        }
+        binding.etEndDateRefer2.setOnClickListener {
+            binding.etEndDateRefer2.hideKeyboard()
+            dateConstVal = "6"
+            DateUtils.openDatePicker(requireActivity(), this, false, false)
+        }
+        binding.etEndDateRefer3.setOnClickListener {
+            binding.etEndDateRefer3.hideKeyboard()
+            dateConstVal = "7"
+            DateUtils.openDatePicker(requireActivity(), this, false, false)
         }
 
         binding.etLocation.setOnClickListener {
@@ -314,7 +379,7 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
             qualification = ""
             itemsQualification.forEachIndexed { index, filterOption ->
                 if (filterOption.isSelected) {
-                    qualification += "{${filterOption.id}," + "${filterOption.skill_exp}}"
+                    qualification += "${filterOption.id},"
                 }
             }
 
@@ -341,14 +406,18 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                     binding.etName.showSnackBar(getString(R.string.enter_last_name))
                 }
                 (binding.etMobileNumber.visibility == View.VISIBLE &&
-                        (binding.etMobileNumber.text.toString().isEmpty() || binding.etMobileNumber.text.toString().length < 6)) -> {
+                        (binding.etMobileNumber.text.toString()
+                            .isEmpty() || binding.etMobileNumber.text.toString().length < 6)) -> {
                     binding.etEmail.showSnackBar(getString(R.string.enter_phone_number))
                 }
-                (binding.ilEmail.visibility == View.VISIBLE && binding.etEmail.text.toString().trim().isEmpty()) -> {
+                (binding.ilEmail.visibility == View.VISIBLE && binding.etEmail.text.toString()
+                    .trim().isEmpty()) -> {
                     binding.etEmail.showSnackBar(getString(R.string.enter_email))
                 }
-                (binding.etEmail.text.toString().trim().isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(
-                        binding.etEmail.text.toString().trim()).matches()) -> {
+                (binding.etEmail.text.toString().trim()
+                    .isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(
+                    binding.etEmail.text.toString().trim()
+                ).matches()) -> {
                     binding.etEmail.showSnackBar(getString(R.string.enter_correct_email))
                 }
                 binding.etLocation.text.toString().isEmpty() -> {
@@ -363,9 +432,15 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                 shift.isEmpty() -> {
                     binding.tvShift.showSnackBar(getString(R.string.what_type_of_shifts))
                 }
-                /*experience.isEmpty() -> {
+                /*skillsexperience.equals("Experience") -> {
                     binding.tvExperience.showSnackBar(getString(R.string.please_select_your_experience))
                 }*/
+                shift.isEmpty() -> {
+                    binding.tvShift.showSnackBar(getString(R.string.what_type_of_shifts))
+                }
+                setRate.isEmpty() -> {
+                    binding.tvShift.showSnackBar(getString(R.string.rate_des))
+                }
                 /* binding.etLiscence.text.toString().trim().isEmpty() -> {
                      binding.etLiscence.showSnackBar(getString(R.string.professional_liscence))
                  }*/
@@ -374,6 +449,93 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                  }*/
                 binding.etStartDate.text.toString().trim().isEmpty() -> {
                     binding.etStartDate.showSnackBar(getString(R.string.start_date))
+                }
+                binding.etNameRefer1.text.toString().trim().isEmpty() -> {
+                    binding.etNameRefer1.showSnackBar(getString(R.string.enter_company))
+                }
+                binding.etContactPersonRefer1.text.toString().trim().isEmpty() -> {
+                    binding.etContactPersonRefer1.showSnackBar(getString(R.string.enter_contact_pernson))
+                }
+                (binding.etContactNumberRefer1.visibility == View.VISIBLE &&
+                        (binding.etContactNumberRefer1.text.toString()
+                            .isEmpty() || binding.etContactNumberRefer1.text.toString().length < 6)) -> {
+                    binding.etContactNumberRefer1.showSnackBar(getString(R.string.enter_phone_number))
+                }
+                (binding.etCCompanyEmailRefer1.text.toString().trim().isEmpty()) -> {
+                    binding.etCCompanyEmailRefer1.showSnackBar(getString(R.string.enter_email))
+                }
+                (binding.etCCompanyEmailRefer1.text.toString().trim()
+                    .isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(
+                    binding.etCCompanyEmailRefer1.text.toString().trim()
+                ).matches()) -> {
+                    binding.etCCompanyEmailRefer1.showSnackBar(getString(R.string.enter_correct_email))
+                }
+                binding.etJobTypeRefer1.text.toString().trim().isEmpty() -> {
+                    binding.etJobTypeRefer1.showSnackBar(getString(R.string.enter_job))
+                }
+                binding.etStartDateRefer1.text.toString().trim().isEmpty() -> {
+                    binding.etStartDateRefer1.showSnackBar(getString(R.string.start_date))
+                }
+                binding.etEndDateRefer1.text.toString().trim().isEmpty() -> {
+                    binding.etStartDateRefer1.showSnackBar(getString(R.string.end_date))
+                }
+                binding.etNameRefer2.text.toString().trim().isEmpty() -> {
+                    binding.etNameRefer2.showSnackBar(getString(R.string.enter_company))
+                }
+                binding.etContactPersonRefer2.text.toString().trim().isEmpty() -> {
+                    binding.etContactPersonRefer2.showSnackBar(getString(R.string.enter_contact_pernson))
+                }
+                (binding.etContactNumberRefer2.visibility == View.VISIBLE &&
+                        (binding.etContactNumberRefer2.text.toString()
+                            .isEmpty() || binding.etContactNumberRefer2.text.toString().length < 6)) -> {
+                    binding.etContactNumberRefer2.showSnackBar(getString(R.string.enter_phone_number))
+                }
+                (binding.etCCompanyEmailRefer2.text.toString().trim().isEmpty()) -> {
+                    binding.etCCompanyEmailRefer2.showSnackBar(getString(R.string.enter_email))
+                }
+                (binding.etCCompanyEmailRefer2.text.toString().trim()
+                    .isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(
+                    binding.etCCompanyEmailRefer2.text.toString().trim()
+                ).matches()) -> {
+                    binding.etCCompanyEmailRefer2.showSnackBar(getString(R.string.enter_correct_email))
+                }
+                binding.etJobTypeRefer2.text.toString().trim().isEmpty() -> {
+                    binding.etJobTypeRefer2.showSnackBar(getString(R.string.enter_job))
+                }
+                binding.etStartDateRefer2.text.toString().trim().isEmpty() -> {
+                    binding.etStartDateRefer2.showSnackBar(getString(R.string.start_date))
+                }
+                binding.etEndDateRefer2.text.toString().trim().isEmpty() -> {
+                    binding.etStartDateRefer2.showSnackBar(getString(R.string.end_date))
+                }
+                binding.etNameRefer3.text.toString().trim().isEmpty() -> {
+                    binding.etNameRefer3.showSnackBar(getString(R.string.enter_company))
+                }
+                binding.etContactPersonRefer3.text.toString().trim().isEmpty() -> {
+                    binding.etContactPersonRefer3.showSnackBar(getString(R.string.enter_contact_pernson))
+                }
+                (binding.etContactNumberRefer3.visibility == View.VISIBLE &&
+                        (binding.etContactNumberRefer3.text.toString()
+                            .isEmpty() || binding.etContactNumberRefer3.text.toString().length < 6)) -> {
+                    binding.etContactNumberRefer3.showSnackBar(getString(R.string.enter_phone_number))
+                }
+                (binding.etCCompanyEmailRefer3.text.toString().trim().isEmpty()) -> {
+                    binding.etCCompanyEmailRefer3.showSnackBar(getString(R.string.enter_email))
+                }
+                (binding.etCCompanyEmailRefer3.text.toString().trim()
+                    .isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(
+                    binding.etCCompanyEmailRefer3.text.toString().trim()
+                ).matches()) -> {
+                    binding.etCCompanyEmailRefer3.showSnackBar(getString(R.string.enter_correct_email))
+                }
+                binding.etJobTypeRefer3.text.toString().trim().isEmpty() -> {
+                    binding.etJobTypeRefer3.showSnackBar(getString(R.string.enter_job))
+                }
+                binding.etStartDateRefer3.text.toString().trim().isEmpty() -> {
+                    binding.etStartDateRefer3.showSnackBar(getString(R.string.start_date))
+                }
+                binding.etEndDateRefer3.text.toString().trim().isEmpty() -> {
+                    binding.etStartDateRefer3.showSnackBar(getString(R.string.end_date))
                 }
                 isConnectedToInternet(requireContext(), true) -> {
                     requireActivity().intent.putExtra(FILTER_DATA, qualification.removeSuffix(","))
@@ -394,7 +556,7 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
         hashMap["type"] = getRequestBody(DocType.IMAGE)
 
         val body: RequestBody =
-                RequestBody.create(MediaType.parse("text/plain"), fileToUpload)
+            RequestBody.create(MediaType.parse("text/plain"), fileToUpload)
         hashMap["image\"; fileName=\"" + fileToUpload?.name] = body
 
         viewModelUpload.uploadFile(hashMap)
@@ -410,6 +572,7 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
         hashMap["lat"] = address?.location?.get(1).toString()
         hashMap["long"] = address?.location?.get(0).toString()
         hashMap["bio"] = binding.etBio.text.toString().trim()
+        hashMap["set_rates"] = setRate
         if (binding.etMobileNumber.text.toString().trim().isNotEmpty()) {
             hashMap["country_code"] = binding.ccpCountryCode.selectedCountryCodeWithPlus
             hashMap["phone"] = binding.etMobileNumber.text.toString()
@@ -444,8 +607,10 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                     }
                 }
                 CustomFields.START_DATE -> {
-                    item.field_value = DateUtils.dateFormatChange(DateFormat.DATE_FORMAT_SLASH,
-                            DateFormat.DATE_FORMAT, binding.etStartDate.text.toString())
+                    item.field_value = DateUtils.dateFormatChange(
+                        DateFormat.DATE_FORMAT_SLASH,
+                        DateFormat.DATE_FORMAT, binding.etStartDate.text.toString()
+                    )
                     custom_fields.add(item)
                 }
             }
@@ -557,7 +722,11 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                         }
                     }
 
-                    adapterQualification = CheckItemAdapterQualification(true, itemsQualification, activity?.baseContext!!)
+                    adapterQualification = CheckItemAdapterQualification(
+                        false,
+                        itemsQualification,
+                        activity?.baseContext!!
+                    )
                     binding.rvQualification.adapter = adapterQualification
                 }
                 Status.ERROR -> {
@@ -586,18 +755,25 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                             requireActivity().finish()
                         }
                         userRepository.isUserLoggedIn() -> {
-                            startActivity(Intent(requireContext(), HomeActivity::class.java)
-                                    .putExtra(EXTRA_IS_FIRST, true))
+                            startActivity(
+                                Intent(requireContext(), HomeActivity::class.java)
+                                    .putExtra(EXTRA_IS_FIRST, true)
+                            )
                             requireActivity().finish()
                         }
                         else -> {
                             val fragment = MasterPrefrenceFragment()
                             val bundle = Bundle()
-                            bundle.putString(MASTER_PREFRENCE_TYPE, PreferencesType.PERSONAL_INTEREST)
+                            bundle.putString(
+                                MASTER_PREFRENCE_TYPE,
+                                PreferencesType.PERSONAL_INTEREST
+                            )
                             fragment.arguments = bundle
 
-                            replaceFragment(requireActivity().supportFragmentManager,
-                                    fragment, R.id.container)
+                            replaceFragment(
+                                requireActivity().supportFragmentManager,
+                                fragment, R.id.container
+                            )
                         }
                     }
                 }
@@ -646,13 +822,35 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
             }
 
             updateServices.filters = filterArray
-            Log.d("filter", updateServices.toString())
+            //Timber.d(updateServices.toString())
             viewModel.updateServices(updateServices)
         }
     }
 
     override fun onDateSelected(date: String) {
-        binding.etStartDate.setText(date)
+        when (dateConstVal) {
+            "1" -> {
+                binding.etStartDate.setText(date)
+            }
+            "2" -> {
+                binding.etStartDateRefer1.setText(date)
+            }
+            "3" -> {
+                binding.etStartDateRefer2.setText(date)
+            }
+            "4" -> {
+                binding.etStartDateRefer3.setText(date)
+            }
+            "5" -> {
+                binding.etEndDateRefer1.setText(date)
+            }
+            "6" -> {
+                binding.etEndDateRefer2.setText(date)
+            }
+            "7" -> {
+                binding.etEndDateRefer3.setText(date)
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -680,8 +878,10 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
                 }
                 AppRequestCode.IMAGE_PICKER -> {
                     val docPaths = ArrayList<Uri>()
-                    docPaths.addAll(data?.getParcelableArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA)
-                            ?: emptyList())
+                    docPaths.addAll(
+                        data?.getParcelableArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA)
+                            ?: emptyList()
+                    )
 
                     fileToUpload = File(getPathUri(requireContext(), docPaths[0]))
                     Glide.with(requireContext()).load(fileToUpload).into(binding.ivPic)
@@ -703,19 +903,19 @@ class RegisterFragment : DaggerFragment(), OnDateSelected, AdapterView.OnItemSel
     @OnNeverAskAgain(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun onNeverAskAgainRationale() {
         PermissionUtils.showAppSettingsDialog(
-                requireContext(), R.string.media_permission
+            requireContext(), R.string.media_permission
         )
     }
 
     @OnPermissionDenied(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun showDeniedForStorage() {
         PermissionUtils.showAppSettingsDialog(
-                requireContext(), R.string.media_permission
+            requireContext(), R.string.media_permission
         )
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+        setRate = parent?.getItemAtPosition(position).toString()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

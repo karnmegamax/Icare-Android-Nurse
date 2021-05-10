@@ -6,6 +6,7 @@ import java.io.Serializable
 class UserData : Serializable {
     var id: String? = null
     var name: String? = null
+    var last_name: String? = null
     var phone: String? = null
     var country_code: String? = null
     var profile_image: String? = null

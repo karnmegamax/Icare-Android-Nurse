@@ -7,7 +7,7 @@ object Config {
     var BASE_URL_TEST = "http://icare.megamaxservices.com"
     var BASE_URL_LIVE = "http://icare.megamaxservices.com"
 
-    var IMAGE_URL = "https://consultants3assets.sfo2.digitaloceanspaces.com/"
+    var IMAGE_URL = "https://icare.megamaxservices.com/storage/icare_bucket/"
 
     private val appMode = AppMode.DEV
 

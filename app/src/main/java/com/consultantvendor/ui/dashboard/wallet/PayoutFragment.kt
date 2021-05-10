@@ -156,7 +156,7 @@ class PayoutFragment : DaggerFragment() {
                     hashMap["account_holder_name"] = binding.etAccountName.text.toString()
                     hashMap["bank_name"] = binding.etBankName.text.toString()
                     hashMap["institution_number"] = binding.etInstitutionNumber.text.toString()
-                    hashMap["ifc_code"] = binding.etTransitNumber.text.toString()
+                    hashMap["transit_number"] = binding.etTransitNumber.text.toString()
                     hashMap["account_holder_type"] = "individual"
                     hashMap["country"] = binding.spnCountry.selectedItem.toString()
                     hashMap["currency"] = binding.spnCurrency.selectedItem.toString()

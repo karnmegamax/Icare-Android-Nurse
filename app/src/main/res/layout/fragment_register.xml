@@ -494,7 +494,9 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            tools:ignore="UselessParent">
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/tvSetRate"
@@ -517,6 +519,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:spinnerMode="dropdown" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="05dp"
+                                android:alpha="0.8"
+                                android:fontFamily="@font/campton_semibold"
+                                android:padding="5dp"
+                                android:text="$/Hour"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/sp_16"
+                                tools:ignore="HardcodedText" />
 
                         </LinearLayout>
 
@@ -565,7 +579,8 @@
                             android:id="@+id/employe_type_grp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            tools:ignore="UselessParent">
 
                             <RadioButton
                                 android:id="@+id/independentContractor"
@@ -675,6 +690,630 @@
                         android:textSize="@dimen/sp_16" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <LinearLayout
+                    android:id="@+id/ilReference"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ilStartDate">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_4"
+                        android:layout_marginBottom="@dimen/dp_4"
+                        app:cardCornerRadius="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_10"
+                        app:cardElevation="@dimen/dp_4"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dp_10">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.8"
+                                android:padding="5dp"
+                                android:fontFamily="@font/campton_semibold"
+                                android:gravity="center"
+                                android:text="@string/reference_one"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/sp_16" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etNameRefer1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/company_name"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etContactPersonRefer1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/contact_person"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etContactNumberRefer1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/contact_number"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etCCompanyEmailRefer1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/company_email"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etJobTypeRefer1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/job_name"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etStartDateRefer1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/start_date"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etEndDateRefer1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/end_date"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_4"
+                        android:layout_marginBottom="@dimen/dp_4"
+                        android:layout_marginTop="@dimen/dp_10"
+                        app:cardCornerRadius="@dimen/dp_8"
+                        app:cardElevation="@dimen/dp_4"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dp_10">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.8"
+                                android:padding="5dp"
+                                android:fontFamily="@font/campton_semibold"
+                                android:gravity="center"
+                                android:text="@string/reference_two"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/sp_16" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etNameRefer2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/company_name"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16"
+                                    tools:ignore="TooManyViews" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etContactPersonRefer2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/contact_person"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etContactNumberRefer2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/contact_number"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etCCompanyEmailRefer2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/company_email"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etJobTypeRefer2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/job_name"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etStartDateRefer2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/start_date"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etEndDateRefer2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/end_date"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_4"
+                        android:layout_marginBottom="@dimen/dp_4"
+                        app:cardCornerRadius="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_10"
+                        app:cardElevation="@dimen/dp_4"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dp_10">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.8"
+                                android:padding="5dp"
+                                android:fontFamily="@font/campton_semibold"
+                                android:gravity="center"
+                                android:text="@string/reference_three"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/sp_16" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etNameRefer3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/company_name"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etContactPersonRefer3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/contact_person"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etContactNumberRefer3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/contact_number"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="number"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etCCompanyEmailRefer3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/company_email"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etJobTypeRefer3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/job_name"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etStartDateRefer3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/start_date"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:background="@drawable/drawable_stroke_grey"
+                                android:padding="@dimen/dp_4">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/etEndDateRefer3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/campton_medium"
+                                    android:hint="@string/end_date"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="100"
+                                    android:maxLines="1"
+                                    android:padding="@dimen/dp_8"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/sp_16" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvContinue"
@@ -693,7 +1332,8 @@
                     android:textSize="@dimen/sp_14"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ilStartDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/ilReference"
+                    tools:ignore="UnusedAttribute" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -108,7 +108,7 @@ class LoginEmailFragment : DaggerFragment() {
                 !Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text.toString()).matches() -> {
                     binding.etEmail.showSnackBar(getString(R.string.enter_correct_email))
                 }
-                binding.etPassword.text.toString().length < 8 -> {
+                binding.etPassword.text.toString().length < 5 -> {
                     binding.etPassword.showSnackBar(getString(R.string.enter_password))
                 }
                 binding.cbTerms.visibility==View.VISIBLE && !binding.cbTerms.isChecked -> {

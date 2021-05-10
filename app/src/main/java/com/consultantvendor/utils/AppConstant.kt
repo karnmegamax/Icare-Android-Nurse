@@ -175,6 +175,7 @@ object CustomFields {
     const val PROFESSIONAL_LISCENCE = "Professional Liscence"
     const val CERTIFICATION = "Certification"
     const val START_DATE = "Start Date"
+    lateinit var skillsexperience: String
 }
 
 object ClientFeatures {

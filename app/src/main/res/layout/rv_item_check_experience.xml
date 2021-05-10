@@ -8,11 +8,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_8">
 
-        <RadioButton
-            android:id="@+id/rbName"
+        <CheckBox
+            android:id="@+id/cbName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_4"
+            android:layout_weight="1"
             android:clickable="false"
             android:focusable="false"
             android:fontFamily="@font/campton_medium"
@@ -25,21 +26,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <CheckBox
-                android:id="@+id/cbName"
+            <RadioButton
+                android:id="@+id/rbName"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dp_4"
+                android:layout_weight="1"
                 android:clickable="false"
                 android:focusable="false"
                 android:fontFamily="@font/campton_medium"
@@ -51,9 +53,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="95dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:background="@drawable/drawable_stroke_grey"
-                android:padding="@dimen/dp_4">
+                android:padding="@dimen/dp_4"
+                android:visibility="gone">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etName"
@@ -73,12 +75,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
             <Spinner
                 android:id="@+id/expSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"/>
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
 

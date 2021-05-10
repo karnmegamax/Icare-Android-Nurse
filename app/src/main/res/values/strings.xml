@@ -84,7 +84,7 @@
     <string name="select_dob">Please select DOB</string>
     <string name="enter_email">Please enter email</string>
     <string name="enter_correct_email">Please enter correct email</string>
-    <string name="enter_password">Password length must be atleast 8 characters</string>
+    <string name="enter_password">Password length must be atleast 5 characters</string>
     <string name="enter_bio">Please enter Personal Profile</string>
     <string name="enter_job">Please enter Job Type</string>
     <string name="enter_company">Please enter Company Name</string>
@@ -377,6 +377,7 @@
     <string name="reference_description">Please provide at least 3 references</string>
     <string name="can_select_more_than_one">(Can select more than one)</string>
     <string name="what_type_of_shifts">What type of shifts are you interested in?</string>
+
 
 
     <!--Shift-->
